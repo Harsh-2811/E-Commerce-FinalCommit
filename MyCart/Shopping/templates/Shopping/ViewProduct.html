@@ -1,0 +1,400 @@
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<style>
+body {
+  font-family: 'open sans';
+  overflow-x: hidden; }
+
+img {
+  max-width: 100%; }
+
+.preview {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+  @media screen and (max-width: 996px) {
+    .preview {
+      margin-bottom: 20px; } }
+
+.preview-pic {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
+
+.preview-thumbnail.nav-tabs {
+  border: none;
+  margin-top: 15px; }
+  .preview-thumbnail.nav-tabs li {
+    width: 18%;
+    margin-right: 2.5%; }
+    .preview-thumbnail.nav-tabs li img {
+      max-width: 100%;
+      display: block; }
+    .preview-thumbnail.nav-tabs li a {
+      padding: 0;
+      margin: 0; }
+    .preview-thumbnail.nav-tabs li:last-of-type {
+      margin-right: 0; }
+
+.tab-content {
+  overflow: hidden; }
+  .tab-content img {
+    width: 100%;
+    -webkit-animation-name: opacity;
+            animation-name: opacity;
+    -webkit-animation-duration: .3s;
+            animation-duration: .3s; }
+
+.card {
+  margin-top: 50px;
+  background: #eee;
+  padding: 3em;
+  line-height: 1.5em; }
+
+@media screen and (min-width: 997px) {
+  .wrapper {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex; } }
+
+.details {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column; }
+
+.colors {
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1; }
+
+.product-title, .price, .sizes, .colors {
+  text-transform: UPPERCASE;
+  font-weight: bold; }
+
+.checked, .price span {
+  color: #ff9f1a; }
+
+.product-title, .rating, .product-description, .price, .vote, .sizes {
+  margin-bottom: 15px; }
+
+.product-title {
+  margin-top: 0; }
+
+.size {
+  margin-right: 10px; }
+  .size:first-of-type {
+    margin-left: 40px; }
+
+.color {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  height: 2em;
+  width: 2em;
+  border-radius: 2px; }
+  .color:first-of-type {
+    margin-left: 20px; }
+
+.add-to-cart, .like {
+  background: #ff9f1a;
+  padding: 1.2em 1.5em;
+  border: none;
+  text-transform: UPPERCASE;
+  font-weight: bold;
+  color: #fff;
+  -webkit-transition: background .3s ease;
+          transition: background .3s ease; }
+  .add-to-cart:hover, .like:hover {
+    background: #b36800;
+    color: #fff; }
+
+.not-available {
+  text-align: center;
+  line-height: 2em; }
+  .not-available:before {
+    font-family: fontawesome;
+    content: "\f00d";
+    color: #fff; }
+
+.orange {
+  background: #ff9f1a; }
+
+.green {
+  background: #85ad00; }
+
+.blue {
+  background: #0076ad; }
+
+.tooltip-inner {
+  padding: 1.3em; }
+
+@-webkit-keyframes opacity {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(3);
+            transform: scale(3); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(3);
+            transform: scale(3); }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1); } }
+
+{% load static %}
+body{
+    background-image:url('{% static "Shopping/backgroundimg.jpg" %}');
+    background-size:cover;
+    background-repeat:no-repeat;
+}
+</style>
+    </head>
+<body style="background-color:pink;">
+  <div>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
+  <a class="navbar-brand" href="#">My FavCart</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About Us</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/TrackProduct">Tracker</a>
+      </li>
+    </ul>
+
+
+    <a href="/checkout"><button class='btn btn-primary' id ='checkout'>Checkout</button></a>  <button class='btn btn-danger' onclick='clearCart()' style="margin-left: 10px;" id ='clearCart'>Clear Cart</button>
+  </div>
+     <button type="button" class="btn btn-warning mx-2" data-html="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus." id="popcart">
+  My Cart<sub><i class="fa fa-shopping-cart" style="font-size:26px;color:green;"></i></sub><span> <sup id="Cart" style="color:red;font-weight:bold;">(0)</sup></span>
+</button>
+</nav>
+  </div>
+	<div class="container">
+		<div class="card">
+			<div class="container-fliud">
+				<div class="wrapper row">
+					<div class="preview col-md-6">
+
+						<div class="preview-pic tab-content">
+						  <div class="tab-pane active" id="pic-1"><img src="/media/{{product.image}} " /></div>
+						  <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+						</div>
+						<ul class="preview-thumbnail nav nav-tabs">
+						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						  <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						  <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						  <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						  <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						</ul>
+
+					</div>
+					<div class="details col-md-6">
+						<h3 class="product-title" id="Nameproduct{{product.id}}">{{product.product_name}}</h3>
+						<div class="rating">
+							<div class="stars">
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+							</div>
+							<span class="review-no">41 reviews</span>
+						</div>
+						<p class="product-description">{{product.desc}}</p>
+						<h4 class="price">current price: Rs. <span id="Priceproduct{{product.id}}"> {{product.price}}</span></h4>
+						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+						<h5 class="sizes">sizes:
+							<span class="size" data-toggle="tooltip" title="small">s</span>
+							<span class="size" data-toggle="tooltip" title="medium">m</span>
+							<span class="size" data-toggle="tooltip" title="large">l</span>
+							<span class="size" data-toggle="tooltip" title="xtra large">xl</span>
+						</h5>
+						<h5 class="colors">colors:
+							<span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+							<span class="color green"></span>
+							<span class="color blue"></span>
+						</h5>
+						<div class="action">
+                             <span id="divproduct{{product.id}}" class="divproduct"><button id="product{{product.id}}" class="add-to-cart btn btn-primary cart" value="pr{{product.id}}">Add To Cart</button></span>
+                           
+                            <button class="cart btn btn-success" type="button" style="width:150px;height:60px;">Buy Now</button>
+							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<script>
+var MyitName={};
+if(localStorage.getItem('Mycart') == null){
+var Mycart = {};
+
+}
+
+else
+{
+
+Mycart = JSON.parse(localStorage.getItem('Mycart'));
+
+updateCart(Mycart);
+}
+    
+    
+$('.divproduct').on("click", "button.cart",function(){
+console.log('clicked');
+var idstr = this.id.toString();
+
+if (Mycart[idstr] !=undefined){
+qty = Mycart[idstr][0] + 1;
+
+}
+else{
+qty = 1;
+
+name=document.getElementById("Name"+idstr).innerHTML;
+Price=document.getElementById("Price"+idstr).innerHTML;
+console.log("inelse");
+Mycart[idstr] = [qty,name,parseInt(Price)];
+
+}
+updateCart(Mycart);
+});
+   
+$('#popcart').popover()
+updatepopover(Mycart);
+function updatepopover(Mycart)
+{
+
+    var popstr="";
+    popstr=popstr+"<h5>Cart for your items in my shopping cart</h5><div class='mx-2 my-2' style='font-weight:bold;'>";
+    var i=1;
+    for(var it in Mycart)
+    {
+        console.log(it);
+        //console.log(document.getElementById("Name"+it));
+        if(Mycart[it][0]==0)
+            {}
+        else
+            {
+                popstr=popstr+"<b>"+i+"</b>. ";
+        popstr=popstr+document.getElementById("Name"+it).innerHTML+".... Qty : "+Mycart[it][0]+"<br>";
+        i=i+1;
+            }
+    }
+    
+   
+    popstr=popstr+"</div>";
+    document.getElementById("popcart").setAttribute('data-content', popstr);
+   
+     
+    $('#popcart').popover('show');
+    
+    
+}
+      
+ function updateCart(Mycart) {
+   
+
+    for (var item in Mycart) {
+        if(Mycart[item][0]==0)
+            {
+              document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart">Add To Cart</button>';
+             delete Mycart[item];
+            }
+        else
+            {
+                document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-warning minus'>-</button> <span id='val" + item + "''>" + Mycart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-warning plus Inc'> + </button>";
+            }
+    }
+    localStorage.setItem('Mycart', JSON.stringify(Mycart));
+      
+    var Counter=0;
+    for(count in Mycart)
+    {
+      Counter += parseInt(Mycart[count][0]);
+    }
+    document.getElementById('Cart').innerHTML = Counter;
+    console.log(Mycart);
+    updatepopover(Mycart);
+}
+    
+$('.divproduct').on("click", "button.minus",function() {
+
+a = this.id.slice(12, );
+Mycart['product' + a][0] = Mycart['product' + a][0] - 1;
+Mycart['product' + a][0] = Math.max(0, Mycart['product' + a][0]);
+document.getElementById('valproduct' + a).innerHTML = Mycart['product' + a][0];
+
+updateCart(Mycart);
+});
+$('.divproduct').on("click", "button.plus",function(){
+a = this.id.slice(11, );
+Mycart['product' + a][0] = Mycart['product' + a][0] + 1;
+document.getElementById('valproduct' + a).innerHTML = Mycart['product' + a][0];
+updateCart(Mycart);
+});
+    
+function clearCart() {
+    Mycart = JSON.parse(localStorage.getItem('Mycart'));
+    for (var item in Mycart) {
+        document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart">Add To Cart</button>'
+    }
+    localStorage.clear();
+    Mycart = {};
+    updateCart(Mycart);
+}
+</script>
+    </body>
+

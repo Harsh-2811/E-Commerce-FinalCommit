@@ -1,0 +1,100 @@
+
+<!doctype html>
+{% load static %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>{% block title %} {% endblock %}</title>
+
+    {% block ecss %} {% endblock %}
+    <style>
+      {% block css %} {% endblock %}
+    </style>
+  </head>
+  <body>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
+  <a class="navbar-brand" href="#">My FavCart</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item {% block homeactivebar %}{% endblock %}">
+        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item {% block aboutactivebar %}{% endblock %}">
+        <a class="nav-link" href="/about">About Us</a>
+      </li>
+
+      <li class="nav-item {% block contactactivebar %}{% endblock %}">
+        <a class="nav-link" href="/contact">Contact Us</a>
+      </li>
+      <li class="nav-item {% block trackeractivebar %}{% endblock %}">
+        <a class="nav-link" href="/TrackProduct">Tracker</a>
+      </li>
+    </ul>
+
+
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+     <button type="button" class="btn btn-warning mx-2" data-html="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus." id="popcart">
+  My Cart<sub><i class="fa fa-shopping-cart" style="font-size:26px;color:green;"></i></sub><span> <sup id="Cart" style="color:red;font-weight:bold;">(0)</sup></span>
+</button>
+  </div>
+
+</nav>
+   {% block body %} {% endblock %}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+<script>
+var MyitName={};
+if(localStorage.getItem('Mycart') == null){
+var Mycart = {};
+
+}
+
+else
+{
+
+Mycart = JSON.parse(localStorage.getItem('Mycart'));
+
+updateCart(Mycart);
+}
+    
+updateCart(Mycart);
+ function updateCart(Mycart) {
+   
+    localStorage.setItem('Mycart', JSON.stringify(Mycart));
+      
+    var Counter=0;
+    for(count in Mycart)
+    {
+      Counter += parseInt(Mycart[count][0]);
+    }
+    document.getElementById('Cart').innerHTML = Counter;
+    console.log(Mycart);
+   
+}
+</script>
+    {% block js %}  {% endblock %}
+  </body>
+</html>

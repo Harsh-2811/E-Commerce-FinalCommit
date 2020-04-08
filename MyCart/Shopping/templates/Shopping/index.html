@@ -1,0 +1,405 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        div.card {
+              width: 250px;
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+              text-align: center;
+            }
+
+        .type {
+            color: red;
+            border: 2px solid green;
+            width: 500px;
+            margin-left: 150px;
+            font-weight: bold;
+            text-decoration: underline;
+            padding: 5px;
+            background-color: yellow;
+            text-align: center;
+        }
+
+        .card-img-top {
+            height: 400px;
+        }
+
+        .row {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        .carousel-control-prev,
+        .carousel-control-next {
+            top: auto;
+            bottom: auto;
+        }
+
+    </style>
+
+    <title>Home Page</title>
+    <style>
+        .card-img-top {
+            height: 300px;
+        }
+
+    </style>
+
+</head>
+
+<body style="background-color:cyan;">
+
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
+            <a class="navbar-brand" href="#">My FavCart</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About Us</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/TrackProduct">Tracker</a>
+                    </li>
+
+                </ul>
+                <form class="form-inline" action="/search" method="get" style="margin-right:10px;">
+                    <input class="form-control mr-sm-2" name="search" id="search" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                <button type="button" class="btn btn-warning mx-2" data-html="true" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus
+sagittis lacus vel augue laoreet rutrum faucibus." id="popcart">
+                    My Cart<sub><i class="fa fa-shopping-cart" style="font-size:26px;color:green;"></i></sub><span> <sup id="Cart" style="color:red;font-weight:bold;">(0)</sup></span>
+                </button>
+                <a href="/checkout"><button class='btn btn-primary' id='checkout'>Checkout</button></a> <button class='btn btn-danger' onclick='clearCart()' style="margin-left: 10px;" id='clearCart'>Clear Cart</button>
+            </div>
+
+
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                       Welcome {{username}}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/logoutprocess">LogOut</a>
+                        
+                    </div>
+                </li>
+            </ul>
+            
+            {% else %}
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#loginmodal" style="margin-left: 4px;">
+                Log In
+            </button>
+            <button type="button" style="margin-left:5px;" class="btn btn-info" data-toggle="modal" data-target="#signupmodal" width="100%">
+                Sign Up
+            </button>
+
+            {% endif %}
+
+        </nav>
+    </div>
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message : </strong> {{message}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    <div class="modal fade" id="signupmodal" tabindex="-1" role="dialog" aria-labelledby="signupmodalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="signupmodalLabel">Sign Up Form</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row ">
+                        <div class="col-md-10 py-5 border">
+                            <h4 class="pb-4">Please fill with your details</h4>
+                            <form action="/enteruser/" method="post">{% csrf_token %}
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input id="FName" name="fname" placeholder="First Name" class="form-control" type="text">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input id="LName" name="lname" placeholder="Last Name" class="form-control" type="text">
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <input type="text" class="form-control" id="username" name="username" placeholder="User Name">
+                                    </div>
+
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email">
+                                    </div>
+
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <input type="password" class="form-control" name="pass" id="password" placeholder="Password">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <input type="password" class="form-control" id="cpass" name="pass1" placeholder="Confirm Password">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <button type="submit" class="btn btn-danger">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="loginmodalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginmodalLabel">LogIn Form</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row ">
+                        <div class="col-md-10 py-5 border">
+
+                            <form method="post" action="/loginprocess/">{% csrf_token %}
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-10">
+                                        <input type="text" class="form-control" name="username" id="loginemail" placeholder="Email">
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-10">
+                                        <input type="password" class="form-control" name="loginpassword" id="loginpass" placeholder="Password">
+                                    </div>
+
+                                </div>
+                                <div class="form-row">
+                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Slider -->
+    {% for products, range, nSlides in allProds %}
+    <h3 class="type">{{products.0.category}}</h3>
+    <div id="demo{{forloop.counter}}" class="carousel slide" data-ride="carousel">
+
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+
+            {% for i in range %}
+            <li data-target="#demo{{forloop.parentloop.counter}}" data-slide-to="{{i}}"></li>
+            {% endfor %}
+        </ul>
+
+        <!-- The slideshow -->
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row md-3">
+
+                    {% for i in products %}
+
+                    <div class="card" style="width:300px;margin-left:20px;">
+                        <img class="card-img-top" src='/media/{{i.image}}' alt="Card image" style="width:100%;border:2px solid green;border-radius:2px;">
+                        <div class="card-body">
+                            <h4 class="card-title" id="Nameproduct{{i.id}}">{{i.product_name}}</h4>
+                            <p class="card-text">{{i.desc}}</p>
+                            {% load static %}
+                            <h4 style="color:green">Price : <span style="color:maroon;" id="Priceproduct{{i.id}}">{{i.price}}</span> Rs.</h4>
+                            <span id="divproduct{{i.id}}" class="divproduct"><button id="product{{i.id}}" class="btn btn-primary cart" value="pr{{i.id}}">Add To Cart</button></span>
+                            <a href="/ViewProduct/{{i.id}}"><button id="show{{i.id}}" class="btn btn-success" value="pr{{i.id}}">View Product</button>
+
+                            </a>
+                        </div>
+                    </div>
+                    {% if forloop.counter|divisibleby:4 and forloop.counter > 0 and not forloop.last %}
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row md-3">
+                    {% endif %}
+
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+
+    <a class="carousel-control-prev" href="#demo{{forloop.counter}}" data-slide="prev">
+        <span><button class="btn btn-success">Prev</button></span>
+    </a>
+    <a class="carousel-control-next" href="#demo{{forloop.counter}}" data-slide="next">
+        <span><button class="btn btn-success">Next -></button></span>
+    </a>
+    <br />
+    <br />
+
+    {% endfor %}
+    <!-- end-slider -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script>
+        var MyitName = {};
+        if (localStorage.getItem('Mycart') == null) {
+            var Mycart = {};
+
+        } else {
+
+            Mycart = JSON.parse(localStorage.getItem('Mycart'));
+
+            updateCart(Mycart);
+        }
+
+
+        $('.divproduct').on("click", "button.cart", function() {
+            console.log('clicked');
+            var idstr = this.id.toString();
+
+            if (Mycart[idstr] != undefined) {
+                qty = Mycart[idstr][0] + 1;
+
+            } else {
+                qty = 1;
+
+                name = document.getElementById("Name" + idstr).innerHTML;
+                Price = document.getElementById("Price" + idstr).innerHTML;
+                console.log("inelse");
+                Mycart[idstr] = [qty, name, parseInt(Price)];
+
+            }
+            updateCart(Mycart);
+        });
+
+        $('#popcart').show()
+        updatepopover(Mycart);
+
+        function updatepopover(Mycart) {
+
+            var popstr = "";
+            popstr = popstr + "<h5>Cart for your items in my shopping cart</h5><div class='mx-2 my-2' style='font-weight:bold;'>";
+            var i = 1;
+            for (var it in Mycart) {
+                console.log(it);
+                //console.log(document.getElementById("Name"+it));
+                if (Mycart[it][0] == 0) {} else {
+                    popstr = popstr + "<b>" + i + "</b>. ";
+                    popstr = popstr + document.getElementById("Name" + it).innerHTML + ".... Qty : " + Mycart[it][0] + "<br>";
+                    i = i + 1;
+                }
+            }
+
+
+            popstr = popstr + "</div>";
+            document.getElementById("popcart").setAttribute('data-content', popstr);
+
+
+            $('#popcart').popover('show');
+
+
+        }
+
+        function updateCart(Mycart) {
+
+
+            for (var item in Mycart) {
+                if (Mycart[item][0] == 0) {
+                    document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart">Add To Cart</button>';
+                    delete Mycart[item];
+                } else {
+                    document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-warning minus'>-</button> <span id='val" + item + "''>" + Mycart[item][0] + "</span> <button id='plus" + item + "' class='btn btn-warning plus Inc'> + </button>";
+                }
+            }
+            localStorage.setItem('Mycart', JSON.stringify(Mycart));
+
+            var Counter = 0;
+            for (count in Mycart) {
+                Counter += parseInt(Mycart[count][0]);
+            }
+            document.getElementById('Cart').innerHTML = Counter;
+            console.log(Mycart);
+            updatepopover(Mycart);
+        }
+
+        $('.divproduct').on("click", "button.minus", function() {
+
+            a = this.id.slice(12, );
+            Mycart['product' + a][0] = Mycart['product' + a][0] - 1;
+            Mycart['product' + a][0] = Math.max(0, Mycart['product' + a][0]);
+            document.getElementById('valproduct' + a).innerHTML = Mycart['product' + a][0];
+
+            updateCart(Mycart);
+        });
+        $('.divproduct').on("click", "button.plus", function() {
+            a = this.id.slice(11, );
+            Mycart['product' + a][0] = Mycart['product' + a][0] + 1;
+            document.getElementById('valproduct' + a).innerHTML = Mycart['product' + a][0];
+            updateCart(Mycart);
+        });
+
+        function clearCart() {
+            Mycart = JSON.parse(localStorage.getItem('Mycart'));
+            for (var item in Mycart) {
+                document.getElementById('div' + item).innerHTML = '<button id="' + item + '" class="btn btn-primary cart">Add To Cart</button>'
+            }
+            localStorage.clear();
+            Mycart = {};
+            updateCart(Mycart);
+        }
+
+    </script>
+
+</body>
+
+</html>

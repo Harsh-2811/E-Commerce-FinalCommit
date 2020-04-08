@@ -1,0 +1,82 @@
+{% extends 'Shopping/basic.html' %}
+{% block title %} About Page {% endblock %}
+{% block ecss %}
+<style>
+{% load static %}
+.about-bg{
+	background-image:url('{% static "Shopping/unnamed.jpg" %}');
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-attachment:fixed;
+}
+
+.about-heading > p{
+	font-size:24px;
+	font-weight:bold;
+}
+
+.about-txt > p{
+	font-size:18px;
+	text-align:center;
+	
+}
+.about-content-box{
+	padding-top:100px;
+	padding-bottom:100px;
+	padding-left:70px;
+	padding-right:70px;
+	color:#fff;
+}
+
+.about-bg-layer{
+	background-color:rgba(62,207,182,0.70);
+	height:200%;
+	margin:0px;
+}
+</style>
+{% endblock %}
+{% block aboutactivebar %}active{% endblock %}
+{% block body %}
+
+<section>
+
+	<div class="container-fluid">
+    
+        	<div class="row about-bg">
+                <div class="col-md-6">
+                    
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12 about-bg-layer">
+                
+                
+                <div class="">
+                <div class="about-content-box">
+                <div class="about-heading">
+                
+                    <h1>ABOUT US</h1>
+                    <h2>MyFav Cart</h2>
+                    <p>---It Must Be Pets--- </p>
+                </div>
+                    <div class="about-txt">
+                    	<p>This is Best and Awesome E-commerce site to buy Foods and other Accessories  for pest like Betl,House, food bowl and etc.
+                        Pet Care, an industry quite often overlooked in the consumer packaged goods market, and for what reason? Possibly due to its somewhat monotonous nature and habitual buying patterns among consumers.
+Millennials and Gen Z have received increasing attention from marketers in recent years, but retailers must not underestimate Baby Boomers and their impressive spending power, especially in regards to buying Pet Care products. In fact, Boomers will shortly become even more affluent, as they’re expected to inherit a whopping $8.4 trillion by 2030.
+According to research conducted by Google and Ipsos, online “is the top source for Baby Boomers for gathering information on topics of interest, outpacing TV and print media by a substantial margin”. Could this possibly be the reason for the rise of Pet Care brands going digital? We believe so.
+Statista reported that eCommerce Pet Care sales grew by roughly 3.4. billion U.S. dollars, compared to approximately 317 million dollars for bricks and mortar sales. If that figure doesn’t jump out at you, then nothing will!
+                        </p>
+                    </div>
+                    </div>
+                   
+                     <div style="float:right; color:#fff;">
+            Author:: <a href="https://twitter.com/BadrRehman">@Badr Rehman</a>
+        </div>
+                    
+                </div>
+			</div>
+        </div>
+       
+    </div>
+
+</section>
+{% endblock %}
+
