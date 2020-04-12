@@ -23,7 +23,7 @@ def index(request):
     print(categorys)
     for cat in categorys:
         prod=Product.objects.filter(category=cat)
-        n = len(products)
+        n = len(prod)
         Noslides = n // 4 + ceil((n / 4) - (n // 4))
         allProds.append([prod,range(1,Noslides),Noslides])
 
