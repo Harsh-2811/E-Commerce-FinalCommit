@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e34a146f-940d-4a9a-bfff-8a6b1ce7be7d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/MyCart/Shopping/static/Shopping/Header.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyCart/Shopping/templates/Shopping/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/MyCart/Shopping/templates/Shopping/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyCart/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/MyCart/db.sqlite3" afterDir="false" />
-    </list>
+    <list default="true" id="e34a146f-940d-4a9a-bfff-8a6b1ce7be7d" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +172,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586759002071</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Recommit Final">
+      <created>1586930735550</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1586930735550</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -200,7 +202,8 @@
     <MESSAGE value="Change Language" />
     <MESSAGE value="chane in views.py" />
     <MESSAGE value="Image Changing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Image Changing" />
+    <MESSAGE value="Recommit Final" />
+    <option name="LAST_COMMIT_MESSAGE" value="Recommit Final" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
