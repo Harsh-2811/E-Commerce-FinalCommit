@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e34a146f-940d-4a9a-bfff-8a6b1ce7be7d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/MyCart/Shopping/static/Shopping/Header.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyCart/Shopping/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/MyCart/Shopping/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyCart/Shopping/templates/Shopping/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/MyCart/Shopping/templates/Shopping/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MyCart/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/MyCart/db.sqlite3" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +29,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MyBlog" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -161,7 +163,21 @@
       <option name="project" value="LOCAL" />
       <updated>1586336497905</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="chane in views.py">
+      <created>1586676082465</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586676082465</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Image Changing">
+      <created>1586759002071</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1586759002071</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -182,7 +198,9 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Change Language" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change Language" />
+    <MESSAGE value="chane in views.py" />
+    <MESSAGE value="Image Changing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Image Changing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

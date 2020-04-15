@@ -47,7 +47,15 @@
             top: auto;
             bottom: auto;
         }
-
+        {% load static %}
+        .HeaderNav{
+            background-image:url('{% static "Shopping/Header.jpg" %}');
+            background-repeat:no-repeat;
+            background-size:cover;
+            height:500px;
+            width:100%;
+            margin-bottom:10px;
+        }
     </style>
 
     <title>Home Page</title>
@@ -61,7 +69,7 @@
 </head>
 
 <body style="background-color:cyan;">
-
+    <div class="HeaderNav">
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2">
             <a class="navbar-brand" href="#">My FavCart</a>
@@ -122,6 +130,7 @@ sagittis lacus vel augue laoreet rutrum faucibus." id="popcart">
             {% endif %}
 
         </nav>
+    </div>
     </div>
     {% for message in messages %}
     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
